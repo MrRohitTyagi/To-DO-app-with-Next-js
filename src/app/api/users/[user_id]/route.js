@@ -1,7 +1,11 @@
 // route for [user_id] folder
 
+import { getuserId } from "@/helper/functions";
 import userModel from "@/models/userModel";
 import { NextResponse } from "next/server";
+const { connectDB } = require("@/helper/db");
+
+connectDB();
 
 export async function DELETE(req, { params }) {
   try {
@@ -46,6 +50,23 @@ export async function PUT(req, { params }) {
       success: true,
       newUser: updateUser,
     });
+  } catch (error) {
+    console.log("error", error);
+    return NextResponse.json(
+      {
+        msg: `Something went wrong`,
+        success: false,
+      },
+      { status: 500 }
+    );
+  }
+}
+
+export async function GET(req, { params }) {
+  const { user_id } = params;
+  try {
+    const user = await userModel.findById(user_id);
+    if (user) return NextResponse.json({ success: true, user });
   } catch (error) {
     console.log("error", error);
     return NextResponse.json(

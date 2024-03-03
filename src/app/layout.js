@@ -1,8 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/Components/Navbar";
-import Footer from "@/Components/Footer";
-
+import Authorize from "@/Components/Authorize";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -16,7 +15,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <div className="h-screen">
           <Navbar />
-          {children}
+          <Authorize>{children}</Authorize>
           {/* <Footer /> */}
         </div>
       </body>

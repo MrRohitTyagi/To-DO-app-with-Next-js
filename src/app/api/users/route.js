@@ -1,9 +1,7 @@
-import { connectDB } from "@/helper/db";
 import { NextResponse } from "next/server";
 import userModel from "@/models/userModel";
 
 // route of user folder
-connectDB();
 
 export async function GET(req, { params }) {
   const username = req.nextUrl.searchParams.get("username");
