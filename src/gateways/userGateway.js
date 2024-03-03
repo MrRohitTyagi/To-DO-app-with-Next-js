@@ -1,9 +1,9 @@
 import axiosinstance from "@/helper/axiosinstance";
-import { getuserId } from "@/helper/functions";
+import { getToken } from "@/helper/functions";
 
 export async function getUserById() {
-  const id = getuserId();
-  const { data } = await axiosinstance.get(`api/users/${id}`);
-  console.log(`%c getUserById `, "color: orange;border:2px solid cyan", data);
+  const token = getToken();
+  console.log(`%c token `, "color: yellow;border:1px solid lightgreen", token);
+  const { data } = await axiosinstance.get(`api/users`, { headers: { token } });
   return data.user;
 }

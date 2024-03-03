@@ -1,5 +1,6 @@
 "use client";
+import Cookies from "js-cookie";
 
-export function getuserId() {
-  return localStorage.getItem("user_id");
+export function getToken() {
+  return Cookies.get("token");
 }
