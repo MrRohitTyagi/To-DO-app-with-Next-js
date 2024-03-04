@@ -4,7 +4,7 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <nav className="h-12 bg-blend-darken bg-slate-800 w-full border-b-cyan-300 border-b-2 flex justify-between px-4 items-center">
+    <nav className="h-nav bg-blend-darken bg-slate-800 w-full border-b-cyan-300 border-b-2 flex justify-between px-4 items-center">
       <Link href="/">Task Master.io</Link>
       <ul className=" flex justify-center gap-4">
         <Link href="about" className="cursor-pointer">
