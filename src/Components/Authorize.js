@@ -19,9 +19,12 @@ const Authorize = ({ children }) => {
       setUser((p) => ({ ...p, isLoading: false, user, isAuthorised: true }));
     })();
   }, []);
-  console.log(`%c user `, "color: green;border:1px solid green", user);
 
-  return <AuthContext.Provider value={user}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={{ user, setUser }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
 export default Authorize;

@@ -1,5 +1,6 @@
 import userModel from "@/models/userModel";
 import { NextResponse } from "next/server";
+import { generateJWT } from "../helperFunctions";
 
 export async function POST(req, { params }) {
   const { username, password } = await req.json();
@@ -8,7 +9,8 @@ export async function POST(req, { params }) {
       .findOne({ username, password })
       .select("-password -__v");
     if (user) {
-      return NextResponse.json({ success: true, user });
+      const token = generateJWT({ ...user._doc });
+      return NextResponse.json({ success: true, token, user });
     } else {
       return NextResponse.json({ success: true, noUser: true });
     }

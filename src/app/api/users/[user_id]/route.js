@@ -7,7 +7,6 @@ import { NextResponse } from "next/server";
 export async function DELETE(req, { params }) {
   try {
     const { user_id } = params;
-    console.log("id", user_id);
     const deletedUser = await userModel.findByIdAndDelete(user_id);
     if (!deletedUser) {
       return NextResponse.json(

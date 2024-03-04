@@ -13,7 +13,7 @@ const Navbar = () => {
         <Link href="login" className="cursor-pointer">
           Login
         </Link>
-        <Link href="login" className="cursor-pointer">
+        <Link href="admin" className="cursor-pointer">
           Admin
         </Link>
       </ul>

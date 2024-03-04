@@ -1,4 +1,5 @@
 import tasksModel from "@/models/tasksModel";
+import { jwtDecode } from "jwt-decode";
 import { NextResponse } from "next/server";
 
 //create a task
@@ -19,10 +20,10 @@ export async function POST(req, { params }) {
 // get all tasks
 
 export async function GET(req, { params }) {
-  let userid = req.headers.get("user_id");
-  console.log("req.headers", userid);
+  let token = req.headers.get("token");
+  const decodeduser = jwtDecode(token);
   try {
-    const tasks = await tasksModel.find({ belongs_to: userid });
+    const tasks = await tasksModel.find({ belongs_to: decodeduser._id });
 
     return NextResponse.json({ success: true, tasks });
   } catch (error) {
